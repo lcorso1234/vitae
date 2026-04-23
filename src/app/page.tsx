@@ -34,8 +34,8 @@ export default function Home() {
       <nav className="no-print fixed top-0 w-full z-50 border-b border-white/5 bg-black/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center font-black text-white italic">V</div>
+            <div className="flex items-center gap-3">
+              <img src="/j.svg" alt="Logo" className="w-8 h-8 object-contain" />
               <div className="text-xl font-black tracking-tighter text-white uppercase italic">Vitae</div>
             </div>
             <div className="h-4 w-[1px] bg-white/10" />
