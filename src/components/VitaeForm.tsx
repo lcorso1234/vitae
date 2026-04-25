@@ -73,12 +73,9 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
       {/* Skills */}
       <section className="bg-zinc-900 border border-white/10 p-8 rounded-3xl shadow-2xl">
         <h3 className="text-2xl font-bold tracking-tighter text-white mb-8 border-b border-white/5 pb-4">Technical Skills</h3>
-        <textarea
-          value={data.skills.technical.join(', ')}
-          onChange={(e) => onChange({ ...data, skills: { ...data.skills, technical: e.target.value.split(',').map(s => s.trim()).filter(Boolean) } })}
-          rows={2}
-          className="w-full bg-zinc-800/50 text-white rounded-xl border border-white/5 p-4 focus:outline-none focus:border-indigo-500 transition-colors"
-          placeholder="Comma separated list of skills..."
+        <SkillsTextarea
+          skills={data.skills.technical}
+          onChange={(newSkills) => onChange({ ...data, skills: { ...data.skills, technical: newSkills } })}
         />
       </section>
 
@@ -299,3 +296,23 @@ const Input: React.FC<{ label: string; value: string; onChange: (v: string) => v
     />
   </div>
 );
+
+const SkillsTextarea: React.FC<{ skills: string[]; onChange: (skills: string[]) => void }> = ({ skills, onChange }) => {
+  const [text, setText] = React.useState(() => skills.join(', '));
+
+  return (
+    <textarea
+      value={text}
+      onChange={(e) => {
+        setText(e.target.value);
+        onChange(e.target.value.split(',').map(s => s.trim()).filter(Boolean));
+      }}
+      onBlur={() => {
+        setText(skills.join(', '));
+      }}
+      rows={2}
+      className="w-full bg-zinc-800/50 text-white rounded-xl border border-white/5 p-4 focus:outline-none focus:border-indigo-500 transition-colors"
+      placeholder="Comma separated list of skills..."
+    />
+  );
+};
