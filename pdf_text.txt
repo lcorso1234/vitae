@@ -1,0 +1,58 @@
+CURRI CULUM VI TAE 2026
+Larry Corso
+SOFTWARE ENGINEER
+Chicago | lawrencecorso1@gmail.com | LinkedIn | GitHub | Portfolio
+SUMMARY
+Accomplished Software Engineer with over 10 years of experience in technology, brand strategy and software development. Expertise 
+in building scalable digital products and managing complex cross-functional projects. Proven track record of delivering high-impact 
+solutions for diverse clients.
+TECHNICAL SKILLS
+Node/Express JS, JS React, CSS, Tailwind CSS, HTML 5, MongoDB, Docker, Next JS, Github, Digital Ocean, Google Cloud, VS
+Code, Chat GPT, Vercel, Anti-Gravity, Klaviyo {Built my own}, Figma, WordPress
+WORK EXPERIENCE
+Brand Strategist & Software Engineer 12/2024 – PRESENT
+Jung International LLC | Website
+Disrupted the marketing industry with revolutionary ﬁeld cards, a two way communication achieved through NFC cards to make
+networking more personal again.
+Developed a social media platform that removes the complications of setting up an account before posting, making the backend
+open source on the front end.
+Created slide cards which are a mobile only design that allows users to present disruptive technology combining the traditional
+method of values, features, beneﬁts with modern tech.
+Entrepreneur, Business Owner 03/2018 – 12/2025
+Rumi Design and Technology | Website
+Built a company, through prospecting and cold calling; then learned how to design, develop and host my own websites to give
+the client a competitive advantage in their marketplace.
+Accomplished successful delivery of 40+ client projects, across many industries.
+Sourcing global resources, identiﬁed and secured global design and dev resources to assist in each of the projects.
+Created an eﬀective process to streamline communication across design and development.
+TECH PROJECTSiChat |  Source
+A chat system for those love privacy and security
+Create a chat link, share it with your friends, say whatever is on your mind, then end the chat.
+Blur |  Source
+Privacy is key for sophisticated clients, we pioneered a smart way to blur out sensitive information in our videos.
+Upload the recorded video and blur out logos and sensitive information in a timeline. Each blur has it's own timeline to make this
+software user friendly.
+Watch Me |  Source
+Screen record your projects to present them in a sophisticated manner.
+You can capture your computer's desktop, mobile phone recording screen, and your face at the same time to present
+applications.
+Resume Maker |  Source
+Built a resume builder to apply for jobs ;).
+The builder runs through a checklist of essentials needed to qualify for a software engineer position.
+You can edit the builder easily like a word doc, yet more simple and download the pdf to share.
+Joy Machine |  Source
+An intro, Outro, Lower Thirds and Subtitles video maker
+Content is King, so I kept only the best parts in presenting ideas over video to make any video look professional.
+EDUCATION & CERTIFICATES
+Purdue University
+Bachelor's Degree in Management & Marketing
+04/2011 – 05/2014
+TripleTen
+Computer Software Engineering (Certiﬁcate)
+01/2025 – 11/2025
+Lean Six Sigma
+Black Belt Lean Six Sigma (Certiﬁcate)
+01/2014 – 05/2014
+Indiana University
+Entrepreneurship (Certiﬁcate)
+01/2014 – 05/2014
