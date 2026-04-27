@@ -51,6 +51,8 @@ body {
     box-shadow: none !important;
     border: none !important;
     margin: 0 auto !important;
+    max-height: 2112px !important;
+    overflow: hidden !important;
   }
 }
 

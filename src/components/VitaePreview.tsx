@@ -77,23 +77,25 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                   <h3 className="text-[12px] font-bold mb-4 uppercase tracking-[0.2em] border-b border-[#d6d3d1] pb-2 text-[#57534e]">Work Experience</h3>
                   <div className="space-y-6">
                     {data.experience.map(exp => (
-                      <div key={exp.id} className="break-inside-avoid print:py-1">
-                        <div className="flex justify-between items-baseline mb-1">
-                          <h4 className="text-[14px] font-bold text-[#1c1917] tracking-tight">{exp.role}</h4>
-                          <span className="text-[11.5px] font-medium text-[#57534e] tracking-widest uppercase">{exp.startDate} – {exp.endDate}</span>
-                        </div>
-                        <div className="text-[13px] font-medium mb-2.5 text-[#57534e]">
-                          {exp.company}
-                          {exp.link && (
-                            <>
-                              <span className="font-normal mx-2 text-[#78716c]">|</span>
-                              <a href={exp.link} target="_blank" rel="noopener noreferrer" className="text-[#0284c7] hover:text-[#0369a1] font-medium">Website</a>
-                            </>
-                          )}
+                      <div key={exp.id} className="print:py-1">
+                        <div className="break-inside-avoid">
+                          <div className="flex justify-between items-baseline mb-1">
+                            <h4 className="text-[14px] font-bold text-[#1c1917] tracking-tight">{exp.role}</h4>
+                            <span className="text-[11.5px] font-medium text-[#57534e] tracking-widest uppercase">{exp.startDate} – {exp.endDate}</span>
+                          </div>
+                          <div className="text-[13px] font-medium mb-2.5 text-[#57534e]">
+                            {exp.company}
+                            {exp.link && (
+                              <>
+                                <span className="font-normal mx-2 text-[#78716c]">|</span>
+                                <a href={exp.link} target="_blank" rel="noopener noreferrer" className="text-[#0284c7] hover:text-[#0369a1] font-medium">Website</a>
+                              </>
+                            )}
+                          </div>
                         </div>
                         <ul className="list-disc pl-5 space-y-1.5">
                           {exp.achievements.map((ach, i) => (
-                            <li key={i} className="text-[12.5px] leading-[1.7] text-[#1c1917] font-light pl-1 marker:text-[#78716c]">
+                            <li key={i} className="text-[12.5px] leading-[1.7] text-[#1c1917] font-light pl-1 marker:text-[#78716c] break-inside-avoid">
                               {ach}
                             </li>
                           ))}
@@ -109,16 +111,18 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                     <h3 className="text-[12px] font-bold mb-4 uppercase tracking-[0.2em] border-b border-[#d6d3d1] pb-2 text-[#57534e]">Tech Projects</h3>
                     <div className="space-y-6">
                       {data.projects.map(proj => (
-                        <div key={proj.id} className="break-inside-avoid print:py-1">
-                          <div className="flex justify-between items-baseline mb-1">
-                            <h4 className="text-[14px] font-bold text-[#1c1917] tracking-tight">
-                              {proj.title} <span className="font-normal mx-2 text-[#78716c]">|</span> <a href={proj.link} target="_blank" rel="noopener noreferrer" className="text-[#0284c7] hover:text-[#0369a1] font-medium">Source</a>
-                            </h4>
+                        <div key={proj.id} className="print:py-1">
+                          <div className="break-inside-avoid">
+                            <div className="flex justify-between items-baseline mb-1">
+                              <h4 className="text-[14px] font-bold text-[#1c1917] tracking-tight">
+                                {proj.title} <span className="font-normal mx-2 text-[#78716c]">|</span> <a href={proj.link} target="_blank" rel="noopener noreferrer" className="text-[#0284c7] hover:text-[#0369a1] font-medium">Source</a>
+                              </h4>
+                            </div>
+                            <p className="text-[13px] font-medium mb-2.5 text-[#57534e]">{proj.description}</p>
                           </div>
-                          <p className="text-[13px] font-medium mb-2.5 text-[#57534e]">{proj.description}</p>
                           <ul className="list-disc pl-5 space-y-1.5">
                             {proj.bullets.map((bullet, i) => (
-                              <li key={i} className="text-[12.5px] leading-[1.7] text-[#1c1917] font-light pl-1 marker:text-[#78716c]">
+                              <li key={i} className="text-[12.5px] leading-[1.7] text-[#1c1917] font-light pl-1 marker:text-[#78716c] break-inside-avoid">
                                 {bullet}
                               </li>
                             ))}
