@@ -5,6 +5,7 @@ export const initialVitaeData: VitaeData = {
     fullName: "Larry Corso",
     targetPosition: "Software Engineer",
     email: "lawrencecorso1@gmail.com",
+    phone: "708.932.6851",
     location: "Chicago",
     relocation: "Willing to relocate",
     socialLinks: [
@@ -13,10 +14,10 @@ export const initialVitaeData: VitaeData = {
       { name: "Portfolio", url: "https://yourportfolio.com" }
     ]
   },
-  summary: "Accomplished Software Engineer with over 10 years of experience in technology, brand strategy and software development. Expertise in building scalable digital products and managing complex cross-functional projects. Proven track record of delivering high-impact solutions for diverse clients.",
+  summary: "Accomplished software engineer with over 15 years of experience in brand strategy, technology, and software development. Expertise in building scalable digital products and managing complex cross-functional projects. Proven track record of delivering high-impact solutions across many industries.",
   skills: {
     technical: [
-      "Node/Express JS", "JS React", "CSS", "Tailwind CSS", "HTML 5", "MongoDB", "Docker", "Next JS", "Github", "Digital Ocean", "Google Cloud", "VS Code", "Chat GPT", "Vercel", "Anti-Gravity", "Klaviyo {Built my own}", "Figma", "WordPress"
+      "Node/Express JS", "JS React", "CSS", "Tailwind CSS", "HTML 5", "MongoDB", "Docker", "Next JS", "Github", "Digital Ocean", "Google Cloud", "VS Code", "Chat GPT", "Vercel", "Anti-Gravity", "Klaviyo {Built my own}", "Figma", "WordPress", "SEO"
     ],
     soft: []
   },
@@ -24,7 +25,7 @@ export const initialVitaeData: VitaeData = {
     {
       id: "1",
       title: "iChat",
-      description: "A chat system for those love privacy and security",
+      description: "A chat system for those who love privacy and security",
       link: "https://github.com/lcorso12",
       bullets: [
         "Create a chat link, share it with your friends, say whatever is on your mind, then end the chat."
@@ -72,7 +73,7 @@ export const initialVitaeData: VitaeData = {
     {
       id: "6",
       company: "Jung International LLC",
-      role: "Brand Strategist & Software Engineer",
+      role: "Software Engineer",
       startDate: "12/2024",
       endDate: "PRESENT",
       link: "https://www.jungthemes.com",
@@ -85,15 +86,15 @@ export const initialVitaeData: VitaeData = {
     {
       id: "7",
       company: "Rumi Design and Technology",
-      role: "Entrepreneur, Business Owner",
+      role: "Entrepreneur, Brand Strategist",
       startDate: "03/2018",
       endDate: "12/2025",
       link: "https://rumi.com",
       achievements: [
+        "Created an effective process to streamline communication across design and development.",
         "Built a company, through prospecting and cold calling; then learned how to design, develop and host my own websites to give the client a competitive advantage in their marketplace.",
         "Accomplished successful delivery of 40+ client projects, across many industries.",
-        "Sourcing global resources, identified and secured global design and dev resources to assist in each of the projects.",
-        "Created an effective process to streamline communication across design and development."
+        "Sourcing global resources, identified and secured global design and dev resources to assist in each of the projects."
       ]
     }
   ],
@@ -105,7 +106,7 @@ export const initialVitaeData: VitaeData = {
       program: "Computer Software Engineering",
       field: "Software Engineering",
       startDate: "01/2025",
-      endDate: "11/2025"
+      endDate: "03/2026"
     },
     {
       id: "8",

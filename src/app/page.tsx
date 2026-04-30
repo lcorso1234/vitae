@@ -13,7 +13,7 @@ export default function Home() {
 
   // Persistence
   useEffect(() => {
-    const saved = localStorage.getItem('vitae-data-v3');
+    const saved = localStorage.getItem('vitae-data-v4');
     if (saved) {
       setData(JSON.parse(saved));
     }
@@ -21,7 +21,7 @@ export default function Home() {
 
   const handleDataChange = (newData: VitaeData) => {
     setData(newData);
-    localStorage.setItem('vitae-data-v3', JSON.stringify(newData));
+    localStorage.setItem('vitae-data-v4', JSON.stringify(newData));
   };
 
   const handlePrint = () => {

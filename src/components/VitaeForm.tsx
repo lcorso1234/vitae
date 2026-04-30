@@ -26,6 +26,7 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
           <Input label="Full Name" value={data.personalInfo.fullName} onChange={(v) => handlePersonalInfoChange('fullName', v)} />
           <Input label="Target Position" value={data.personalInfo.targetPosition} onChange={(v) => handlePersonalInfoChange('targetPosition', v)} />
           <Input label="Email" value={data.personalInfo.email} onChange={(v) => handlePersonalInfoChange('email', v)} />
+          <Input label="Phone Number" value={data.personalInfo.phone || ''} onChange={(v) => handlePersonalInfoChange('phone', v)} />
           <Input label="Location" value={data.personalInfo.location} onChange={(v) => handlePersonalInfoChange('location', v)} />
           <Input label="Relocation" value={data.personalInfo.relocation} onChange={(v) => handlePersonalInfoChange('relocation', v)} />
         </div>

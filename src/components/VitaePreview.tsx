@@ -17,17 +17,17 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
     >
       <table className="w-full border-collapse border-0 m-0 p-0">
         <thead className="table-header-group">
-          <tr><td className="p-0 m-0 border-0"><div className="h-[60px] print:h-[40px] w-full" /></td></tr>
+          <tr><td className="p-0 m-0 border-0"><div className="h-[60px] print:h-[20px] w-full" /></td></tr>
         </thead>
         <tfoot className="table-footer-group">
-          <tr><td className="p-0 m-0 border-0"><div className="h-[60px] print:h-[40px] w-full" /></td></tr>
+          <tr><td className="p-0 m-0 border-0"><div className="h-[60px] print:h-[20px] w-full" /></td></tr>
         </tfoot>
         <tbody className="border-0 p-0 m-0">
           <tr>
             <td className="p-0 m-0 border-0 px-[60px] align-top">
               {/* Header */}
-              <header className="mb-[32px] pb-6 text-center break-inside-avoid">
-                <div className="flex justify-center mb-6">
+              <header className="mb-[32px] print:mb-[20px] pb-6 print:pb-4 text-center break-inside-avoid">
+                <div className="flex justify-center mb-6 print:mb-4">
                   <img src="/lc-logo.png" alt="Logo" className="w-16 h-16 object-cover rounded-xl shadow-sm border border-black/5" />
                 </div>
                 <div className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#57534e] mb-4">Curriculum Vitae 2026</div>
@@ -42,6 +42,12 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                   <span>{data.personalInfo.location}</span>
                   <span className="text-[#78716c]">|</span>
                   <span>{data.personalInfo.email}</span>
+                  {data.personalInfo.phone && (
+                    <>
+                      <span className="text-[#78716c]">|</span>
+                      <span>{data.personalInfo.phone}</span>
+                    </>
+                  )}
                   {data.personalInfo.socialLinks.map((link, i) => (
                     <React.Fragment key={i}>
                       <span className="text-[#78716c]">|</span>
@@ -53,7 +59,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                 </div>
               </header>
 
-              <div className="space-y-7">
+              <div className="space-y-7 print:space-y-5">
                 {/* Objective / Summary */}
                 <section className="break-inside-avoid">
                   <h3 className="text-[12px] font-bold mb-3 uppercase tracking-[0.2em] border-b border-[#d6d3d1] pb-2 text-[#57534e]">Summary</h3>
@@ -107,7 +113,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
 
                 {/* Projects */}
                 {data.projects.length > 0 && (
-                  <section>
+                  <section className="print:break-before-page print:pt-8">
                     <h3 className="text-[12px] font-bold mb-4 uppercase tracking-[0.2em] border-b border-[#d6d3d1] pb-2 text-[#57534e]">Tech Projects</h3>
                     <div className="space-y-6">
                       {data.projects.map(proj => (

@@ -31,8 +31,24 @@ body {
     size: letter;
   }
 
-  body {
-    background: #2a3439 !important;
+  html, body {
+    height: 100%;
+    background: #faf9f6 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #faf9f6 !important;
+    z-index: -1;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
@@ -51,8 +67,7 @@ body {
     box-shadow: none !important;
     border: none !important;
     margin: 0 auto !important;
-    max-height: 2112px !important;
-    overflow: hidden !important;
+    overflow: visible !important;
   }
 }
 
