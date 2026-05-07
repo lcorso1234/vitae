@@ -47,6 +47,7 @@ export interface VitaeData {
     relocation: string;
     socialLinks: SocialLink[];
   };
+  coverLetter?: string;
   summary: string;
   skills: {
     technical: string[];

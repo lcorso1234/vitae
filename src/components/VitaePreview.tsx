@@ -12,7 +12,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
   return (
     <div 
       id="vitae-preview" 
-      className="bg-[#faf9f6] text-[#1c1917] min-h-[1056px] w-full max-w-[816px] mx-auto font-sans relative print:w-[816px] print:min-h-0 print:mx-auto shadow-xl print:shadow-none"
+      className="print-vitae bg-[#faf9f6] text-[#1c1917] min-h-[1056px] w-full max-w-[816px] mx-auto font-sans relative print:w-[816px] print:min-h-0 print:mx-auto shadow-xl print:shadow-none"
       style={{ fontFamily: "'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif" }}
     >
       <table className="w-full border-collapse border-0 m-0 p-0">

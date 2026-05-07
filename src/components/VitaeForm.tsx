@@ -59,6 +59,18 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
         </div>
       </section>
 
+      {/* Cover Letter */}
+      <section className="bg-zinc-900 border border-white/10 p-8 rounded-3xl shadow-2xl">
+        <h3 className="text-2xl font-bold tracking-tighter text-white mb-8 border-b border-white/5 pb-4">Cover Letter</h3>
+        <textarea
+          value={data.coverLetter || ''}
+          onChange={(e) => onChange({ ...data, coverLetter: e.target.value })}
+          rows={8}
+          className="w-full bg-zinc-800/50 text-white rounded-xl border border-white/5 p-4 focus:outline-none focus:border-indigo-500 transition-colors"
+          placeholder="Craft your cover letter..."
+        />
+      </section>
+
       {/* Summary */}
       <section className="bg-zinc-900 border border-white/10 p-8 rounded-3xl shadow-2xl">
         <h3 className="text-2xl font-bold tracking-tighter text-white mb-8 border-b border-white/5 pb-4">Professional Summary</h3>
