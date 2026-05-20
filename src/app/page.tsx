@@ -1,23 +1,47 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { VitaeData } from '@/types/vitae';
 import { initialVitaeData } from '@/data/initialState';
 import { VitaeForm } from '@/components/VitaeForm';
 import { VitaePreview } from '@/components/VitaePreview';
 import { Checklist } from '@/components/Checklist';
 
-export default function Home() {
+function VitaeBuilderContent() {
+  const searchParams = useSearchParams();
   const [data, setData] = useState<VitaeData>(initialVitaeData);
   const [activeTab, setActiveTab] = useState<'editor' | 'preview'>('editor');
 
-  // Persistence
+  // Persistence and URL Pre-fill
   useEffect(() => {
     const saved = localStorage.getItem('vitae-data');
-    if (saved) {
+    
+    // Check for pre-fill parameters
+    const company = searchParams.get('company');
+    const role = searchParams.get('role');
+    const problem = searchParams.get('problem');
+    const solution = searchParams.get('solution');
+    
+    if (company || role || problem || solution) {
+      setData(prev => {
+        const newData = { ...prev };
+        if (company) newData.targetCompany = company;
+        if (role) newData.targetRole = role;
+        
+        // Optionally inject problem/solution into summary or a custom field if it exists in your schema
+        // For now, we'll append it to the summary if provided
+        if (problem || solution) {
+          newData.summary = `${problem ? `Targeted Problem: ${problem}\n` : ''}${solution ? `Proposed Solution: ${solution}` : ''}`;
+        }
+        
+        localStorage.setItem('vitae-data', JSON.stringify(newData));
+        return newData;
+      });
+    } else if (saved) {
       setData(JSON.parse(saved));
     }
-  }, []);
+  }, [searchParams]);
 
   const handleDataChange = (newData: VitaeData) => {
     setData(newData);
@@ -64,7 +88,7 @@ export default function Home() {
                <div className="w-32 bg-zinc-800 h-1.5 rounded-full overflow-hidden">
                  <div 
                    className="bg-indigo-500 h-full transition-all duration-500" 
-                   style={{ width: `${(data.summary.split(/[.!?]/).filter(s => s.trim().length > 0).length >= 3 ? 80 : 40)}%` }} 
+                   style={{ width: `${(data.summary?.split(/[.!?]/).filter(s => s.trim().length > 0).length >= 3 ? 80 : 40)}%` }} 
                  />
                </div>
                <span className="text-xs font-bold text-white">Live Validation Active</span>
@@ -138,4 +162,12 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#050505]" />}>
+      <VitaeBuilderContent />
+    </Suspense>
+  )
 }

@@ -7,6 +7,16 @@ interface VitaeFormProps {
 }
 
 export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
+  const [skillsText, setSkillsText] = React.useState(data.skills.technical.join(', '));
+
+  React.useEffect(() => {
+    const newTextCleaned = data.skills.technical.join(', ');
+    const currentTextCleaned = skillsText.split(',').map(s => s.trim()).filter(Boolean).join(', ');
+    if (newTextCleaned !== currentTextCleaned) {
+      setSkillsText(newTextCleaned);
+    }
+  }, [data.skills.technical, skillsText]);
+
   const handlePersonalInfoChange = (field: string, value: string) => {
     onChange({
       ...data,
@@ -74,8 +84,12 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
       <section className="bg-zinc-900 border border-white/10 p-8 rounded-3xl shadow-2xl">
         <h3 className="text-2xl font-bold tracking-tighter text-white mb-8 border-b border-white/5 pb-4">Technical Skills</h3>
         <textarea
-          value={data.skills.technical.join(', ')}
-          onChange={(e) => onChange({ ...data, skills: { ...data.skills, technical: e.target.value.split(',').map(s => s.trim()).filter(Boolean) } })}
+          value={skillsText}
+          onChange={(e) => {
+            const val = e.target.value;
+            setSkillsText(val);
+            onChange({ ...data, skills: { ...data.skills, technical: val.split(',').map(s => s.trim()).filter(Boolean) } });
+          }}
           rows={2}
           className="w-full bg-zinc-800/50 text-white rounded-xl border border-white/5 p-4 focus:outline-none focus:border-indigo-500 transition-colors"
           placeholder="Comma separated list of skills..."
