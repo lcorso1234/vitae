@@ -42,10 +42,12 @@ export interface VitaeData {
     fullName: string;
     targetPosition: string;
     email: string;
+    phone?: string;
     location: string;
     relocation: string;
     socialLinks: SocialLink[];
   };
+  coverLetter?: string;
   summary: string;
   skills: {
     technical: string[];

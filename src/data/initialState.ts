@@ -5,7 +5,8 @@ export const initialVitaeData: VitaeData = {
     fullName: "Larry Corso",
     targetPosition: "Software Engineer",
     email: "lawrencecorso1@gmail.com",
-    location: "Palos Park, Illinois",
+    phone: "708.932.6851",
+    location: "Chicago",
     relocation: "Willing to relocate",
     socialLinks: [
       { name: "LinkedIn", url: "https://www.linkedin.com/in/lawrence-tech/" },
@@ -13,88 +14,112 @@ export const initialVitaeData: VitaeData = {
       { name: "Portfolio", url: "https://yourportfolio.com" }
     ]
   },
-  summary: "Accomplished Software Engineer with over 10 years of experience in brand strategy and technology. Expertise in building scalable digital products and managing complex cross-functional projects. Proven track record of delivering high-impact solutions for diverse clients.",
+  coverLetter: "My company was born in adversity, as I started out with a $1,000 credit card loan. I had to learn how to prospect, sell, design, develop, and host websites by myself.  Through diligent networking and cold calling, I identified several website prospects.  I quickly recognized the need to partner with both a designer and a developer to keep up with the demand.  I met my design partner through a logo design contest.  I then went through several developers to find the one I felt most comfortable with.  He stood out because of his skills and work ethic.  Together, we successfully delivered 40+ client projects across multiple industries over the past 8 years.\n\nThrough this experience, I learned that the hardest part in delivering high quality solutions to our clients was bridging the communications gap between design and development - oil and water; getting them on the same page.  Initially, my role was focused on prospecting, helping clients develop their brand strategies, and selling websites and applications.  But given the critical need to align design and development, I then focused on strengthening my technology and software development skills in order to enhance the communications between our team.  In March of this year, I attained certification as a Software Engineer through a program at TripleTen.  I've learned that I really enjoy software development and am interested in pursuing a position with a development focus that can benefit from my skills and experiences.",
+  summary: "Accomplished software engineer with over 15 years of experience in brand strategy, technology, and software development. Expertise in building scalable digital products and managing complex cross-functional projects. Proven track record of delivering high-impact solutions across many industries.",
   skills: {
     technical: [
-      "JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Tailwind CSS", "PostgreSQL", "WordPress", "Mobile App Development", "SEO"
+      "Node/Express JS", "JS React", "CSS", "Tailwind CSS", "HTML 5", "MongoDB", "Docker", "Next JS", "Github", "Digital Ocean", "Google Cloud", "VS Code", "Chat GPT", "Vercel", "Anti-Gravity", "Klaviyo {Built my own}", "Figma", "WordPress", "SEO"
     ],
     soft: []
   },
   projects: [
     {
       id: "1",
-      title: "ISP - Driver Safety App",
-      description: "A secure, specialized application for cargo logistics and driver safety monitoring.",
+      title: "iChat",
+      description: "A chat system for those who love privacy and security",
       link: "https://github.com/lcorso12",
       bullets: [
-        "Architected a real-time tracking system for cargo load security using React Native to solve the business problem of frequent cargo theft.",
-        "Conducted spatial data analysis using GPS integration to refine driver routes, gaining insights into optimal travel paths and communicating findings via automated dashboards.",
-        "Implemented secure authentication and encrypted data transmission, resulting in 100% compliance with industry security protocols.",
-        "Reduced cargo security incidents by 15% through proactive monitoring features and real-time alerts."
+        "Create a chat link, share it with your friends, say whatever is on your mind, then end the chat."
       ]
     },
     {
       id: "2",
-      title: "Swell Skin - Brand Strategy & E-commerce",
-      description: "Comprehensive rebrand and e-commerce platform for a clinical skincare line.",
-      link: "https://swellskin.net",
+      title: "Blur",
+      description: "Privacy is key for sophisticated clients, we pioneered a smart way to blur out sensitive information in our videos.",
+      link: "https://github.com/lcorso12",
       bullets: [
-        "Developed a custom Shopify storefront focused on conversion optimization to solve the business problem of low online sales.",
-        "Conducted A/B testing analysis on user flows to identify drop-off points, gaining insights that informed UI updates and communicating results to stakeholders.",
-        "Integrated third-party review systems and personalized skincare quiz features to improve customer engagement.",
-        "Increased organic traffic by 40% within 6 months through targeted technical SEO improvements and content strategy."
+        "Upload the recorded video and blur out logos and sensitive information in a timeline. Each blur has it's own timeline to make this software user friendly."
+      ]
+    },
+    {
+      id: "3",
+      title: "Watch Me",
+      description: "Screen record your projects to present them in a sophisticated manner.",
+      link: "https://github.com/lcorso12",
+      bullets: [
+        "You can capture your computer's desktop, mobile phone recording screen, and your face at the same time to present applications."
+      ]
+    },
+    {
+      id: "4",
+      title: "Resume Maker",
+      description: "Built a resume builder to apply for jobs ;).",
+      link: "https://github.com/lcorso12",
+      bullets: [
+        "The builder runs through a checklist of essentials needed to qualify for a software engineer position.",
+        "You can edit the builder easily like a word doc, yet more simple and download the pdf to share."
+      ]
+    },
+    {
+      id: "5",
+      title: "Joy Machine",
+      description: "An intro, Outro, Lower Thirds and Subtitles video maker",
+      link: "https://github.com/lcorso12",
+      bullets: [
+        "Content is King, so I kept only the best parts in presenting ideas over video to make any video look professional."
       ]
     }
   ],
   experience: [
     {
-      id: "3",
-      company: "Jung Themes",
-      role: "Brand Strategist & Software Engineer",
-      startDate: "12/2018",
-      endDate: "present",
+      id: "6",
+      company: "Jung International LLC",
+      role: "Software Engineer",
+      startDate: "12/2024",
+      endDate: "PRESENT",
       link: "https://www.jungthemes.com",
       achievements: [
-        "Accomplished 30% increase in client revenue as evidenced by post-launch analytics by doing strategic brand overhauls and digital optimization.",
-        "Accomplished seamless content delivery as evidenced by handling 10k+ daily users by doing custom WordPress theme and plugin engineering.",
-        "Accomplished a 50% reduction in page load times as evidenced by Lighthouse scores by doing advanced caching and site performance optimizations."
+        "Disrupted the marketing industry with revolutionary field cards, a two way communication achieved through NFC cards to make networking more personal again.",
+        "Developed a social media platform that removes the complications of setting up an account before posting, making the backend open source on the front end.",
+        "Created slide cards which are a mobile only design that allows users to present disruptive technology combining the traditional method of values, features, benefits with modern tech."
       ]
     },
     {
-      id: "4",
+      id: "7",
       company: "Rumi Design and Technology",
-      role: "Lead Developer",
+      role: "Entrepreneur, Brand Strategist",
       startDate: "03/2018",
       endDate: "12/2025",
       link: "https://rumi.com",
       achievements: [
-        "Accomplished successful delivery of 40+ client projects as evidenced by client testimonials by doing agile project management and full-stack development.",
-        "Accomplished consistent cross-device experiences as evidenced by zero mobile QA bugs by doing responsive and adaptive web design standard pioneering.",
-        "Accomplished scalable offshore development as evidenced by 30% faster sprint delivery by doing multinational technical team building and management."
+        "Created an effective process to streamline communication across design and development.",
+        "Built a company, through prospecting and cold calling; then learned how to design, develop and host my own websites to give the client a competitive advantage in their marketplace.",
+        "Accomplished successful delivery of 40+ client projects, across many industries.",
+        "Sourcing global resources, identified and secured global design and dev resources to assist in each of the projects."
       ]
     }
   ],
   education: [
     {
-      id: "5",
+      id: "9",
       school: "TripleTen",
       degree: "Certificate",
       program: "Computer Software Engineering",
       field: "Software Engineering",
       startDate: "01/2025",
-      endDate: "11/2025"
+      endDate: "03/2026"
     },
     {
-      id: "6",
+      id: "8",
       school: "Purdue University",
       degree: "Bachelor's Degree",
-      program: "Business, Management, Marketing",
+      program: "Management & Marketing",
       field: "Management & Marketing",
       startDate: "04/2011",
       endDate: "05/2014"
     },
     {
-      id: "7",
+      id: "10",
       school: "Lean Six Sigma",
       degree: "Certificate",
       program: "Black Belt Lean Six Sigma",
@@ -103,8 +128,8 @@ export const initialVitaeData: VitaeData = {
       endDate: "05/2014"
     },
     {
-      id: "8",
-      school: "Indiana University (IPFW)",
+      id: "11",
+      school: "Indiana University",
       degree: "Certificate",
       program: "Entrepreneurship",
       field: "Business",

@@ -47,10 +47,19 @@ body {
     max-width: none !important;
   }
 
-  #vitae-preview {
+  #vitae-preview, #cover-letter-preview {
     box-shadow: none !important;
     border: none !important;
     margin: 0 auto !important;
+    overflow: visible !important;
+  }
+
+  body[data-print-target="vitae"] .print-cover-letter {
+    display: none !important;
+  }
+
+  body[data-print-target="coverLetter"] .print-vitae {
+    display: none !important;
   }
 }
 

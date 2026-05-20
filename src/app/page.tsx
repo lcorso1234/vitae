@@ -6,6 +6,7 @@ import { VitaeData } from '@/types/vitae';
 import { initialVitaeData } from '@/data/initialState';
 import { VitaeForm } from '@/components/VitaeForm';
 import { VitaePreview } from '@/components/VitaePreview';
+import { CoverLetterPreview } from '@/components/CoverLetterPreview';
 import { Checklist } from '@/components/Checklist';
 
 function VitaeBuilderContent() {
@@ -45,15 +46,19 @@ function VitaeBuilderContent() {
 
   const handleDataChange = (newData: VitaeData) => {
     setData(newData);
-    localStorage.setItem('vitae-data', JSON.stringify(newData));
+    localStorage.setItem('vitae-data-v4', JSON.stringify(newData));
   };
 
-  const handlePrint = () => {
-    window.print();
+  const handlePrint = (target: 'vitae' | 'coverLetter') => {
+    document.body.setAttribute('data-print-target', target);
+    // Give a tiny bit of time for DOM to register the attribute before triggering print.
+    setTimeout(() => {
+      window.print();
+    }, 50);
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-zinc-200 font-sans selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-[#050505] print:bg-[#faf9f6] text-zinc-200 font-sans selection:bg-indigo-500/30">
       {/* Navigation */}
       <nav className="no-print fixed top-0 w-full z-50 border-b border-white/5 bg-black/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -67,13 +72,22 @@ function VitaeBuilderContent() {
           </div>
           <div className="flex items-center gap-4">
             <button 
-              onClick={handlePrint}
+              onClick={() => handlePrint('coverLetter')}
+              className="h-11 px-6 rounded-full bg-indigo-500/10 text-indigo-400 font-bold text-xs uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all flex items-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Cover Letter
+            </button>
+            <button 
+              onClick={() => handlePrint('vitae')}
               className="h-11 px-8 rounded-full bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all flex items-center gap-3 group shadow-2xl shadow-white/5 cursor-pointer active:scale-95"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
-              Download PDF
+              Download Vitae
             </button>
           </div>
         </div>
@@ -133,6 +147,7 @@ function VitaeBuilderContent() {
                   <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200 no-print" />
                   <div className="relative xl:max-h-[calc(100vh-10rem)] overflow-y-auto rounded-xl scrollbar-hide no-print lg:p-1 bg-black/40 border border-white/5 backdrop-blur-sm">
                     <VitaePreview data={data} />
+                    <CoverLetterPreview data={data} />
                   </div>
                 </div>
               </div>
@@ -159,6 +174,7 @@ function VitaeBuilderContent() {
       {/* Global Print Optimized Version (Always accessible to print engine) */}
       <div className="hidden print:block absolute top-0 left-0 w-full">
         <VitaePreview data={data} />
+        <CoverLetterPreview data={data} />
       </div>
     </div>
   );
