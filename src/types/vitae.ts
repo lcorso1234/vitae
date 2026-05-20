@@ -38,6 +38,8 @@ export interface Education {
 }
 
 export interface VitaeData {
+  targetCompany?: string;
+  targetRole?: string;
   personalInfo: {
     fullName: string;
     targetPosition: string;
