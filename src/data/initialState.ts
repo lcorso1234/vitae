@@ -9,7 +9,7 @@ export const initialVitaeData: VitaeData = {
     targetPosition: "Software Engineer",
     email: "lawrencecorso1@gmail.com",
     phone: "708.932.6851",
-    location: "Chicago",
+    location: "Remote",
     relocation: "Willing to relocate",
     socialLinks: [
       { name: "LinkedIn", url: "https://www.linkedin.com/in/lawrence-tech/" },
@@ -28,29 +28,29 @@ export const initialVitaeData: VitaeData = {
   projects: [
     {
       id: "1",
-      title: "iChat",
-      description: "A chat system for those who love privacy and security",
+      title: "Resonance Machine",
+      description: "Built a sound wave machine to help with body and brain health.",
       link: "https://github.com/lcorso12",
       bullets: [
-        "Create a chat link, share it with your friends, say whatever is on your mind, then end the chat."
+        "Find a specific Hz for the desired state of mind you would like to reach and click play."
       ]
     },
     {
       id: "2",
-      title: "Blur",
-      description: "Privacy is key for sophisticated clients, we pioneered a smart way to blur out sensitive information in our videos.",
+      title: "Book",
+      description: "A modern tarot card guide for entrepreneurs to help them on their path.",
       link: "https://github.com/lcorso12",
       bullets: [
-        "Upload the recorded video and blur out logos and sensitive information in a timeline. Each blur has it's own timeline to make this software user friendly."
+        "Click guide me and find over 200 original quotes designed to guide you on your journey,"
       ]
     },
     {
       id: "3",
-      title: "Watch Me",
-      description: "Screen record your projects to present them in a sophisticated manner.",
+      title: "My Images {Save Storage}",
+      description: "An image database",
       link: "https://github.com/lcorso12",
       bullets: [
-        "You can capture your computer's desktop, mobile phone recording screen, and your face at the same time to present applications."
+        "Upload image and then use the link on your website or blog for site speed to be optimal."
       ]
     },
     {
@@ -65,11 +65,11 @@ export const initialVitaeData: VitaeData = {
     },
     {
       id: "5",
-      title: "Joy Machine",
-      description: "An intro, Outro, Lower Thirds and Subtitles video maker",
-      link: "https://github.com/lcorso12",
+      title: "Genius Anonymous",
+      description: "Created a brand strategy for the future of America",
+      link: "https://www.geniusanonymous.org/portfolio",
       bullets: [
-        "Content is King, so I kept only the best parts in presenting ideas over video to make any video look professional."
+        "https://www.geniusanonymous.org/portfolio; Mapped out a blueprint to help earth become a fun place to play again to become again like a child ;)."
       ]
     }
   ],
@@ -84,7 +84,8 @@ export const initialVitaeData: VitaeData = {
       achievements: [
         "Disrupted the marketing industry with revolutionary field cards, a two way communication achieved through NFC cards to make networking more personal again.",
         "Developed a social media platform that removes the complications of setting up an account before posting, making the backend open source on the front end.",
-        "Created slide cards which are a mobile only design that allows users to present disruptive technology combining the traditional method of values, features, benefits with modern tech."
+        "Created slide cards which are a mobile only design that allows users to present disruptive technology combining the traditional method of values, features, benefits with modern tech.",
+        "Handled corporate espionage, hackers, amongst other attacks on my company to secure our culture and freedom."
       ]
     },
     {
@@ -104,15 +105,6 @@ export const initialVitaeData: VitaeData = {
   ],
   education: [
     {
-      id: "9",
-      school: "TripleTen",
-      degree: "Certificate",
-      program: "Computer Software Engineering",
-      field: "Software Engineering",
-      startDate: "01/2025",
-      endDate: "03/2026"
-    },
-    {
       id: "8",
       school: "Purdue University",
       degree: "Bachelor's Degree",
@@ -120,6 +112,15 @@ export const initialVitaeData: VitaeData = {
       field: "Management & Marketing",
       startDate: "04/2011",
       endDate: "05/2014"
+    },
+    {
+      id: "9",
+      school: "TripleTen",
+      degree: "Certificate",
+      program: "Computer Software Engineering",
+      field: "Software Engineering",
+      startDate: "01/2025",
+      endDate: "03/2026"
     },
     {
       id: "10",
