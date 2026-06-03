@@ -29,6 +29,47 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
 
   return (
     <div className="space-y-12 pb-24">
+      {/* Appearance & Settings */}
+      <section className="bg-zinc-900 border border-white/10 p-8 rounded-3xl shadow-2xl">
+        <h3 className="text-2xl font-bold tracking-tighter text-white mb-8 border-b border-white/5 pb-4">Appearance & Settings</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="flex flex-col gap-6">
+            <Input 
+              label="Document Title" 
+              value={data.documentTitle || ''} 
+              onChange={(v) => onChange({ ...data, documentTitle: v })} 
+            />
+            <Input 
+              label="Logo URL (leave blank to hide)" 
+              value={data.logoUrl || ''} 
+              onChange={(v) => onChange({ ...data, logoUrl: v })} 
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-widest mb-2 px-1">Background Theme Color</label>
+            <div className="flex items-center gap-4">
+              <input
+                type="color"
+                value={data.themeColor || '#2a3439'}
+                onChange={(e) => onChange({ ...data, themeColor: e.target.value })}
+                className="w-12 h-12 rounded cursor-pointer bg-zinc-800/50 border border-white/5"
+              />
+              <div className="flex gap-2">
+                {['#2a3439', '#1e1e1e', '#0f172a', '#172554', '#3f1d38', '#f5f5f4'].map(color => (
+                  <button
+                    key={color}
+                    onClick={() => onChange({ ...data, themeColor: color })}
+                    className={`w-8 h-8 rounded-full border-2 ${data.themeColor === color ? 'border-indigo-500' : 'border-white/10'}`}
+                    style={{ backgroundColor: color }}
+                    title={color}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Personal Info */}
       <section className="bg-zinc-900 border border-white/10 p-8 rounded-3xl shadow-2xl">
         <h3 className="text-2xl font-bold tracking-tighter text-white mb-8 border-b border-white/5 pb-4">Personal Info</h3>

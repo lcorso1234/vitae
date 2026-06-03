@@ -38,6 +38,9 @@ export interface Education {
 }
 
 export interface VitaeData {
+  documentTitle?: string;
+  themeColor?: string;
+  logoUrl?: string;
   targetCompany?: string;
   targetRole?: string;
   personalInfo: {

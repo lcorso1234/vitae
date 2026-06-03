@@ -1,6 +1,9 @@
 import { VitaeData } from "../types/vitae";
 
 export const initialVitaeData: VitaeData = {
+  documentTitle: "Curriculum Vitae 2026",
+  themeColor: "#2a3439",
+  logoUrl: "/lc-logo.png",
   personalInfo: {
     fullName: "Larry Corso",
     targetPosition: "Software Engineer",
