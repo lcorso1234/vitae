@@ -87,7 +87,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
               <div className="space-y-7">
                 {/* Objective / Summary */}
                 <section className="break-inside-avoid">
-                  <h3 className="text-[12px] font-bold mb-3 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)]">Summary</h3>
+                  <h3 className="text-[12px] font-bold mb-3 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)] break-after-avoid">Summary</h3>
                   <p className="text-[12.5px] leading-[1.8] whitespace-pre-wrap text-[var(--text-main)] font-normal">
                     {data.summary}
                   </p>
@@ -96,7 +96,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                 {/* Technical Skills */}
                 {data.skills.technical.length > 0 && (
                   <section className="break-inside-avoid">
-                    <h3 className="text-[12px] font-bold mb-3 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)]">Technical Skills</h3>
+                    <h3 className="text-[12px] font-bold mb-3 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)] break-after-avoid">Technical Skills</h3>
                     <p className="text-[12.5px] leading-[1.8] text-[var(--text-main)] font-normal">
                       {data.skills.technical.join(', ')}
                     </p>
@@ -105,7 +105,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
 
                 {/* Experience */}
                 <section>
-                  <h3 className="text-[12px] font-bold mb-4 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)]">Work Experience</h3>
+                  <h3 className="text-[12px] font-bold mb-4 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)] break-after-avoid">Work Experience</h3>
                   <div className="space-y-6">
                     {data.experience.map(exp => (
                       <div key={exp.id} className="break-inside-avoid print:py-1">
@@ -137,7 +137,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                 {/* Projects */}
                 {data.projects.length > 0 && (
                   <section>
-                    <h3 className="text-[12px] font-bold mb-4 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)]">Tech Projects</h3>
+                    <h3 className="text-[12px] font-bold mb-4 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)] break-after-avoid">Tech Projects</h3>
                     <div className="space-y-6">
                       {data.projects.map(proj => (
                         <div key={proj.id} className="break-inside-avoid print:py-1">
@@ -162,7 +162,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
 
                 {/* Education & Certificates */}
                 <section className="break-inside-avoid">
-                  <h3 className="text-[12px] font-bold mb-4 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)]">Education & Certificates</h3>
+                  <h3 className="text-[12px] font-bold mb-4 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)] break-after-avoid">Education & Certificates</h3>
                   <div className="space-y-5">
                     {degrees.map(edu => (
                       <div key={edu.id} className="flex justify-between items-baseline break-inside-avoid">

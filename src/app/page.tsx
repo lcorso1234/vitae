@@ -72,6 +72,25 @@ function VitaeBuilderContent() {
           </div>
           <div className="flex items-center gap-4">
             <button 
+              onClick={async () => {
+                try {
+                  const localData = localStorage.getItem('vitae-data-v4') || localStorage.getItem('vitae-data');
+                  if (!localData) return alert('No local data found to sync!');
+                  const res = await fetch('/api/save-to-github', { method: 'POST', body: localData });
+                  if (res.ok) alert('Successfully synced local data to codebase! You can now commit and push to GitHub.');
+                  else throw new Error();
+                } catch (e) {
+                  alert('Failed to sync to codebase.');
+                }
+              }}
+              className="h-11 px-6 rounded-full bg-emerald-500/10 text-emerald-400 font-bold text-xs uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all flex items-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+              </svg>
+              Sync to Code
+            </button>
+            <button 
               onClick={() => handlePrint('coverLetter')}
               className="h-11 px-6 rounded-full bg-indigo-500/10 text-indigo-400 font-bold text-xs uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all flex items-center gap-2"
             >
