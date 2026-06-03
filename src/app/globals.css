@@ -52,5 +52,12 @@ body {
     border: none !important;
     margin: 0 auto !important;
   }
-}
 
+  body[data-print-target="vitae"] #cover-letter-preview {
+    display: none !important;
+  }
+
+  body[data-print-target="coverLetter"] #vitae-preview {
+    display: none !important;
+  }
+}
