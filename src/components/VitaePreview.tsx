@@ -26,7 +26,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
       `}} />
       <div 
         id="vitae-preview" 
-        className="text-[var(--text-main)] min-h-[1056px] w-full max-w-[816px] mx-auto font-sans relative print:w-[816px] print:min-h-[1056px] print:mx-auto shadow-xl print:shadow-none"
+        className="text-[var(--text-main)] min-h-[1056px] w-full max-w-[816px] mx-auto font-sans relative print:w-[816px] print:min-h-[1056px] print:max-h-[2112px] print:overflow-hidden print:mx-auto shadow-xl print:shadow-none"
         style={{ 
           fontFamily: "'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif",
           backgroundColor: data.themeColor || '#2a3439',
@@ -86,7 +86,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
 
               <div className="space-y-7">
                 {/* Objective / Summary */}
-                <section className="break-inside-avoid">
+                <section>
                   <h3 className="text-[12px] font-bold mb-3 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)] break-after-avoid">Summary</h3>
                   <p className="text-[12.5px] leading-[1.8] whitespace-pre-wrap text-[var(--text-main)] font-normal">
                     {data.summary}
@@ -95,7 +95,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
 
                 {/* Technical Skills */}
                 {data.skills.technical.length > 0 && (
-                  <section className="break-inside-avoid">
+                  <section>
                     <h3 className="text-[12px] font-bold mb-3 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)] break-after-avoid">Technical Skills</h3>
                     <p className="text-[12.5px] leading-[1.8] text-[var(--text-main)] font-normal">
                       {data.skills.technical.join(', ')}
@@ -108,7 +108,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                   <h3 className="text-[12px] font-bold mb-4 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)] break-after-avoid">Work Experience</h3>
                   <div className="space-y-6">
                     {data.experience.map(exp => (
-                      <div key={exp.id} className="break-inside-avoid print:py-1">
+                      <div key={exp.id} className="print:py-1">
                         <div className="flex justify-between items-baseline mb-1">
                           <h4 className="text-[14px] font-bold text-[var(--text-main)] tracking-tight">{exp.role}</h4>
                           <span className="text-[11.5px] font-medium text-[var(--text-main)] tracking-widest uppercase">{exp.startDate} – {exp.endDate}</span>
@@ -140,7 +140,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                     <h3 className="text-[12px] font-bold mb-4 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)] break-after-avoid">Tech Projects</h3>
                     <div className="space-y-6">
                       {data.projects.map(proj => (
-                        <div key={proj.id} className="break-inside-avoid print:py-1">
+                        <div key={proj.id} className="print:py-1">
                           <div className="flex justify-between items-baseline mb-1">
                             <h4 className="text-[14px] font-bold text-[var(--text-main)] tracking-tight">
                               {proj.title} <span className="font-normal mx-2 text-[var(--text-divider)]">|</span> <a href={proj.link} target="_blank" rel="noopener noreferrer" className="text-[var(--text-link)] hover:text-[var(--text-link-hover)] font-medium">Source</a>
@@ -161,11 +161,11 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                 )}
 
                 {/* Education & Certificates */}
-                <section className="break-inside-avoid">
+                <section>
                   <h3 className="text-[12px] font-bold mb-4 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)] break-after-avoid">Education & Certificates</h3>
                   <div className="space-y-5">
                     {degrees.map(edu => (
-                      <div key={edu.id} className="flex justify-between items-baseline break-inside-avoid">
+                      <div key={edu.id} className="flex justify-between items-baseline">
                         <div>
                           <h4 className="text-[14px] font-bold text-[var(--text-main)] tracking-tight">{edu.school}</h4>
                           <p className="text-[12.5px] text-[var(--text-main)] font-normal leading-relaxed mt-0.5">{edu.degree} {edu.field && `in ${edu.field}`}</p>
@@ -174,7 +174,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                       </div>
                     ))}
                     {certificates.map(cert => (
-                      <div key={cert.id} className="flex justify-between items-baseline break-inside-avoid">
+                      <div key={cert.id} className="flex justify-between items-baseline">
                         <div>
                           <h4 className="text-[14px] font-bold text-[var(--text-main)] tracking-tight">{cert.school}</h4>
                           <p className="text-[12.5px] text-[var(--text-main)] font-normal leading-relaxed mt-0.5">{cert.program} (Certificate)</p>
