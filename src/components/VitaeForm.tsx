@@ -8,6 +8,50 @@ interface VitaeFormProps {
 
 export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
   const [skillsText, setSkillsText] = React.useState(data.skills.technical.join(', '));
+  const [jobDescription, setJobDescription] = React.useState('');
+  const [isTailoring, setIsTailoring] = React.useState(false);
+  const [suggestedInvention, setSuggestedInvention] = React.useState<{title: string, description: string, bullets: string[]} | null>(null);
+  const [previousExperience, setPreviousExperience] = React.useState<Experience[] | null>(null);
+
+  const handleTailorResume = async () => {
+    if (!jobDescription) return alert('Please enter a job description first.');
+    setIsTailoring(true);
+    setSuggestedInvention(null);
+    try {
+      const res = await fetch('/api/tailor', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jobDescription,
+          experience: data.experience,
+          projects: data.projects,
+        }),
+      });
+      
+      const result = await res.json();
+      
+      if (!res.ok) {
+        throw new Error(result.error || 'Failed to tailor resume');
+      }
+
+      setPreviousExperience(data.experience);
+      onChange({
+        ...data,
+        experience: result.tailoredExperience,
+      });
+
+      if (result.suggestedInvention) {
+        setSuggestedInvention(result.suggestedInvention);
+      } else {
+        alert('Resume successfully tailored!');
+      }
+
+    } catch (error: any) {
+      alert(`Error: ${error.message}`);
+    } finally {
+      setIsTailoring(false);
+    }
+  };
 
   React.useEffect(() => {
     const newTextCleaned = data.skills.technical.join(', ');
@@ -29,6 +73,88 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
 
   return (
     <div className="space-y-12 pb-24">
+      {/* AI Tailoring */}
+      <section className="bg-zinc-900 border border-indigo-500/30 p-8 rounded-3xl shadow-2xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+           <svg className="w-32 h-32 text-indigo-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 className="text-2xl font-bold tracking-tighter text-white mb-4 border-b border-white/5 pb-4 flex items-center gap-3">
+          <span className="text-indigo-400">✨</span> AI Resume Tailor
+        </h3>
+        <p className="text-zinc-400 text-sm mb-6">Paste the target job description below. Our AI will perfectly align your work experience achievements to match the role requirements, without altering your projects.</p>
+        
+        <textarea
+          value={jobDescription}
+          onChange={(e) => setJobDescription(e.target.value)}
+          rows={5}
+          className="w-full bg-zinc-800/50 text-white rounded-xl border border-white/5 p-4 focus:outline-none focus:border-indigo-500 transition-colors mb-4"
+          placeholder="Paste job description here..."
+        />
+        
+        <div className="flex flex-wrap gap-4">
+          <button
+            onClick={handleTailorResume}
+            disabled={isTailoring || !jobDescription}
+            className="bg-indigo-600 hover:bg-indigo-500 disabled:bg-zinc-800 disabled:text-zinc-500 text-white font-bold py-3 px-6 rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-indigo-500/20"
+          >
+            {isTailoring ? (
+              <>
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                Optimizing Experience...
+              </>
+            ) : 'Tailor Resume to Job'}
+          </button>
+
+          {previousExperience && (
+            <button
+              onClick={() => {
+                onChange({ ...data, experience: previousExperience });
+                setPreviousExperience(null);
+                setSuggestedInvention(null);
+              }}
+              className="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold py-3 px-6 rounded-xl transition-all flex items-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg>
+              Undo AI Changes
+            </button>
+          )}
+        </div>
+
+        {suggestedInvention && (
+          <div className="mt-8 bg-indigo-500/10 border border-indigo-500/20 p-6 rounded-2xl relative">
+             <button onClick={() => setSuggestedInvention(null)} className="absolute top-4 right-4 text-zinc-500 hover:text-white">✕</button>
+             <h4 className="text-indigo-400 font-bold mb-2 flex items-center gap-2">💡 AI Suggested Invention</h4>
+             <p className="text-sm text-zinc-300 mb-4">Based on the job description, the employer would love this project:</p>
+             <div className="bg-black/20 p-4 rounded-xl mb-4">
+               <h5 className="font-bold text-white text-lg">{suggestedInvention.title}</h5>
+               <p className="text-zinc-400 text-sm mb-2">{suggestedInvention.description}</p>
+               <ul className="list-disc pl-5 text-sm text-zinc-300 space-y-1">
+                 {suggestedInvention.bullets.map((b, i) => <li key={i}>{b}</li>)}
+               </ul>
+             </div>
+             <button 
+               onClick={() => {
+                 onChange({
+                   ...data,
+                   projects: [{
+                     id: generateId(),
+                     title: suggestedInvention.title,
+                     description: suggestedInvention.description,
+                     link: '',
+                     bullets: suggestedInvention.bullets,
+                   }, ...data.projects]
+                 });
+                 setSuggestedInvention(null);
+                 alert('Suggested invention added to your Projects!');
+               }}
+               className="bg-white text-black font-bold py-2 px-6 rounded-lg text-sm hover:bg-zinc-200 transition-colors"
+             >
+               Add to Projects
+             </button>
+          </div>
+        )}
+      </section>
+
       {/* Appearance & Settings */}
       <section className="bg-zinc-900 border border-white/10 p-8 rounded-3xl shadow-2xl">
         <h3 className="text-2xl font-bold tracking-tighter text-white mb-8 border-b border-white/5 pb-4">Appearance & Settings</h3>
