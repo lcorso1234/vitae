@@ -1,6 +1,14 @@
 import React from 'react';
 import { VitaeData } from '../types/vitae';
 
+const formatUrl = (url: string) => {
+  if (!url) return '#';
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('mailto:') || url.startsWith('tel:')) {
+    return url;
+  }
+  return `https://${url}`;
+};
+
 interface VitaePreviewProps {
   data: VitaeData;
 }
@@ -41,7 +49,15 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
       >
       <table className="w-full border-collapse border-0 m-0 p-0">
         <thead className="table-header-group">
-          <tr><td className="p-0 m-0 border-0"><div className="h-[60px] print:h-[40px] w-full" /></td></tr>
+          <tr>
+            <td className="p-0 m-0 border-0 align-top">
+              <div className="h-[60px] print:h-[40px] w-full flex justify-center items-start pt-4">
+                 <span className="text-[9px] text-[var(--text-muted)] opacity-60 italic hidden print:inline">
+                   * Note: To open links, please ensure this PDF is opened fully on a computer.
+                 </span>
+              </div>
+            </td>
+          </tr>
         </thead>
         <tfoot className="table-footer-group">
           <tr><td className="p-0 m-0 border-0"><div className="h-[60px] print:h-[40px] w-full" /></td></tr>
@@ -76,7 +92,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                   {data.personalInfo.socialLinks.map((link, i) => (
                     <React.Fragment key={i}>
                       <span className="text-[var(--text-divider)]">|</span>
-                      <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-[var(--text-link)] hover:text-[var(--text-link-hover)] transition-colors font-semibold">
+                      <a href={formatUrl(link.url)} target="_blank" rel="noopener noreferrer" className="text-[var(--text-link)] hover:text-[var(--text-link-hover)] transition-colors font-semibold">
                         {link.name}
                       </a>
                     </React.Fragment>
@@ -118,7 +134,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                           {exp.link && (
                             <>
                               <span className="font-normal mx-2 text-[var(--text-divider)]">|</span>
-                              <a href={exp.link} target="_blank" rel="noopener noreferrer" className="text-[var(--text-link)] hover:text-[var(--text-link-hover)] font-medium">Website</a>
+                              <a href={formatUrl(exp.link)} target="_blank" rel="noopener noreferrer" className="text-[var(--text-link)] hover:text-[var(--text-link-hover)] font-medium">Website</a>
                             </>
                           )}
                         </div>
@@ -143,7 +159,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                         <div key={proj.id} className="print:py-1">
                           <div className="flex justify-between items-baseline mb-1">
                             <h4 className="text-[14px] font-bold text-[var(--text-main)] tracking-tight">
-                              {proj.title} <span className="font-normal mx-2 text-[var(--text-divider)]">|</span> <a href={proj.link} target="_blank" rel="noopener noreferrer" className="text-[var(--text-link)] hover:text-[var(--text-link-hover)] font-medium">Source</a>
+                              {proj.title} <span className="font-normal mx-2 text-[var(--text-divider)]">|</span> <a href={formatUrl(proj.link)} target="_blank" rel="noopener noreferrer" className="text-[var(--text-link)] hover:text-[var(--text-link-hover)] font-medium">Source</a>
                             </h4>
                           </div>
                           <p className="text-[13px] font-medium mb-2.5 text-[var(--text-main)]">{proj.description}</p>

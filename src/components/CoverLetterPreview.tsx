@@ -1,6 +1,14 @@
 import React from 'react';
 import { VitaeData } from '../types/vitae';
 
+const formatUrl = (url: string) => {
+  if (!url) return '#';
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('mailto:') || url.startsWith('tel:')) {
+    return url;
+  }
+  return `https://${url}`;
+};
+
 interface CoverLetterPreviewProps {
   data: VitaeData;
 }
@@ -38,7 +46,15 @@ export const CoverLetterPreview: React.FC<CoverLetterPreviewProps> = ({ data }) 
       >
       <table className="w-full border-collapse border-0 m-0 p-0">
         <thead className="table-header-group">
-          <tr><td className="p-0 m-0 border-0"><div className="h-[60px] print:h-[20px] w-full" /></td></tr>
+          <tr>
+            <td className="p-0 m-0 border-0 align-top">
+              <div className="h-[60px] print:h-[20px] w-full flex justify-center items-start pt-2">
+                 <span className="text-[9px] text-[var(--text-muted)] opacity-60 italic hidden print:inline">
+                   * Note: To open links, please ensure this PDF is opened fully on a computer.
+                 </span>
+              </div>
+            </td>
+          </tr>
         </thead>
         <tfoot className="table-footer-group">
           <tr><td className="p-0 m-0 border-0"><div className="h-[60px] print:h-[20px] w-full" /></td></tr>
@@ -78,7 +94,7 @@ export const CoverLetterPreview: React.FC<CoverLetterPreviewProps> = ({ data }) 
                   {data.personalInfo.socialLinks.map((link, i) => (
                     <React.Fragment key={i}>
                       <span className="text-[var(--text-divider)]">|</span>
-                      <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-[var(--text-link)] hover:text-[var(--text-link-hover)] transition-colors font-semibold">
+                      <a href={formatUrl(link.url)} target="_blank" rel="noopener noreferrer" className="text-[var(--text-link)] hover:text-[var(--text-link-hover)] transition-colors font-semibold">
                         {link.name}
                       </a>
                     </React.Fragment>
