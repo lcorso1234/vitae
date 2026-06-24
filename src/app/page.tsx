@@ -16,7 +16,7 @@ function VitaeBuilderContent() {
 
   // Persistence and URL Pre-fill
   useEffect(() => {
-    const saved = localStorage.getItem('vitae-data-v6');
+    const saved = localStorage.getItem('vitae-data-v7');
     
     // Check for pre-fill parameters
     const company = searchParams.get('company');
@@ -36,7 +36,7 @@ function VitaeBuilderContent() {
           newData.summary = `${problem ? `Targeted Problem: ${problem}\n` : ''}${solution ? `Proposed Solution: ${solution}` : ''}`;
         }
         
-        localStorage.setItem('vitae-data-v6', JSON.stringify(newData));
+        localStorage.setItem('vitae-data-v7', JSON.stringify(newData));
         return newData;
       });
     } else if (saved) {
@@ -46,7 +46,7 @@ function VitaeBuilderContent() {
 
   const handleDataChange = (newData: VitaeData) => {
     setData(newData);
-    localStorage.setItem('vitae-data-v6', JSON.stringify(newData));
+    localStorage.setItem('vitae-data-v7', JSON.stringify(newData));
   };
 
   const handlePrint = (target: 'vitae' | 'coverLetter') => {
@@ -74,7 +74,7 @@ function VitaeBuilderContent() {
             <button 
               onClick={async () => {
                 try {
-                  const localData = localStorage.getItem('vitae-data-v6') || localStorage.getItem('vitae-data-v4') || localStorage.getItem('vitae-data');
+                  const localData = localStorage.getItem('vitae-data-v7') || localStorage.getItem('vitae-data-v6') || localStorage.getItem('vitae-data-v4') || localStorage.getItem('vitae-data');
                   if (!localData) return alert('No local data found to sync!');
                   const res = await fetch('/api/save-to-github', { method: 'POST', body: localData });
                   if (res.ok) alert('Successfully synced local data to codebase! You can now commit and push to GitHub.');
