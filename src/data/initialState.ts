@@ -52,54 +52,7 @@ export const initialVitaeData: VitaeData = {
     ],
     "soft": []
   },
-  "projects": [
-    {
-      "id": "1",
-      "title": "Resonance Machine",
-      "description": "Built a sound wave machine to help with body and brain health.",
-      "link": "https://wave.rumidesign.tech/",
-      "bullets": [
-        "Find a specific Hz for the desired state of mind you would like to reach and click play."
-      ]
-    },
-    {
-      "id": "2",
-      "title": "Book",
-      "description": "A modern tarot card guide for entrepreneurs to help them on their path.",
-      "link": "https://book.rumidesign.tech/",
-      "bullets": [
-        "Click guide me and find over 200 original quotes designed to guide you on your journey,"
-      ]
-    },
-    {
-      "id": "3",
-      "title": "My Images {Save Storage}",
-      "description": "An image database",
-      "link": "https://images.jungthemes.com/",
-      "bullets": [
-        "Upload image and then use the link on your website or blog for site speed to be optimal."
-      ]
-    },
-    {
-      "id": "4",
-      "title": "Resume Maker",
-      "description": "Built a resume builder to apply for jobs ;).",
-      "link": "https://vitae.rumidesign.tech/",
-      "bullets": [
-        "The builder runs through a checklist of essentials needed to qualify for a software engineer position.",
-        "You can edit the builder easily like a word doc, yet more simple and download the pdf to share."
-      ]
-    },
-    {
-      "id": "5",
-      "title": "Plan It",
-      "description": "A Planning Application {Very Cool}",
-      "link": "https://plan.rumidesign.tech/",
-      "bullets": [
-        "Engineered a unified spreadsheet alternative integrating mind-mapping, real-time collaboration, calendars, and advanced financial modeling into a single goal-driven workspace."
-      ]
-    }
-  ],
+  "projects": [],
   "experience": [
     {
       "id": "6",
@@ -125,6 +78,41 @@ export const initialVitaeData: VitaeData = {
         "Launched over 40 web applications, owning the full product lifecycle from user research and wireframing to end-to-end implementation using React and TypeScript.",
         "Engineered a bespoke design system with composable UI components, accelerating development timelines and ensuring visual consistency across all projects.",
         "Operated as a solo Design Engineer, translating diverse user and business needs into polished, functional, and visually compelling digital products."
+      ]
+    },
+    {
+      "id": "12",
+      "company": "Internet Brands",
+      "role": "Website Consultant",
+      "startDate": "12/2015",
+      "endDate": "03/2017",
+      "achievements": [
+        "Implemented new Search Engine Optimization (SEO) service for customers.",
+        "Created new sales strategies of cold calling and taught the process to colleagues.",
+        "Top performer in self-generated leads and sales, selling the SEO service to an average of 30 different customers a month."
+      ]
+    },
+    {
+      "id": "13",
+      "company": "PGN Properties",
+      "role": "IT Consultant, Project Manager",
+      "startDate": "01/2015",
+      "endDate": "12/2015",
+      "achievements": [
+        "Implemented POS systems by developing a GUI through the software to make the system user-friendly for employees, while centralizing all transactions for Hickory Hills Country Club and Chateau Del Mar Banquet Hall.",
+        "Handled a number of technology assignments for PGN including integrating new VoIP communication system and implementing new surveillance system."
+      ]
+    },
+    {
+      "id": "14",
+      "company": "Indiana University - Purdue University",
+      "role": "Help Desk Technician - IT Services",
+      "startDate": "09/2013",
+      "endDate": "12/2014",
+      "achievements": [
+        "Troubleshoot hardware, software and connectivity issues via phone and in person.",
+        "Authorized as Google Administrator to oversee student Gmail accounts for security purposes.",
+        "Migrated faculty members to a new email application (from Novell GroupWise to Microsoft Outlook)."
       ]
     }
   ],

@@ -131,12 +131,6 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                         </div>
                         <div className="text-[13px] font-medium mb-2.5 text-[var(--text-main)]">
                           {exp.company}
-                          {exp.link && (
-                            <>
-                              <span className="font-normal mx-2 text-[var(--text-divider)]">|</span>
-                              <a href={formatUrl(exp.link)} target="_blank" rel="noopener noreferrer" className="text-[var(--text-link)] hover:text-[var(--text-link-hover)] font-medium">Website</a>
-                            </>
-                          )}
                         </div>
                         <ul className="list-disc pl-5 space-y-1.5">
                           {exp.achievements.map((ach, i) => (
@@ -159,7 +153,7 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                         <div key={proj.id} className="print:py-1">
                           <div className="flex justify-between items-baseline mb-1">
                             <h4 className="text-[14px] font-bold text-[var(--text-main)] tracking-tight">
-                              {proj.title} <span className="font-normal mx-2 text-[var(--text-divider)]">|</span> <a href={formatUrl(proj.link)} target="_blank" rel="noopener noreferrer" className="text-[var(--text-link)] hover:text-[var(--text-link-hover)] font-medium">Source</a>
+                              {proj.title}
                             </h4>
                           </div>
                           <p className="text-[13px] font-medium mb-2.5 text-[var(--text-main)]">{proj.description}</p>

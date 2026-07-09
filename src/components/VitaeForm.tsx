@@ -10,13 +10,11 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
   const [skillsText, setSkillsText] = React.useState(data.skills.technical.join(', '));
   const [jobDescription, setJobDescription] = React.useState('');
   const [isTailoring, setIsTailoring] = React.useState(false);
-  const [suggestedInvention, setSuggestedInvention] = React.useState<{title: string, description: string, bullets: string[]} | null>(null);
-  const [previousExperience, setPreviousExperience] = React.useState<Experience[] | null>(null);
+  const [previousState, setPreviousState] = React.useState<{experience: Experience[], summary: string, coverLetter?: string} | null>(null);
 
   const handleTailorResume = async () => {
     if (!jobDescription) return alert('Please enter a job description first.');
     setIsTailoring(true);
-    setSuggestedInvention(null);
     try {
       const res = await fetch('/api/tailor', {
         method: 'POST',
@@ -24,7 +22,8 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
         body: JSON.stringify({
           jobDescription,
           experience: data.experience,
-          projects: data.projects,
+          summary: data.summary,
+          coverLetter: data.coverLetter,
         }),
       });
       
@@ -34,17 +33,20 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
         throw new Error(result.error || 'Failed to tailor resume');
       }
 
-      setPreviousExperience(data.experience);
+      setPreviousState({
+        experience: data.experience,
+        summary: data.summary,
+        coverLetter: data.coverLetter,
+      });
+
       onChange({
         ...data,
         experience: result.tailoredExperience,
+        summary: result.tailoredSummary,
+        coverLetter: result.tailoredCoverLetter,
       });
 
-      if (result.suggestedInvention) {
-        setSuggestedInvention(result.suggestedInvention);
-      } else {
-        alert('Resume successfully tailored!');
-      }
+      alert('Resume successfully tailored!');
 
     } catch (error: any) {
       alert(`Error: ${error.message}`);
@@ -105,12 +107,11 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
             ) : 'Tailor Resume to Job'}
           </button>
 
-          {previousExperience && (
+          {previousState && (
             <button
               onClick={() => {
-                onChange({ ...data, experience: previousExperience });
-                setPreviousExperience(null);
-                setSuggestedInvention(null);
+                onChange({ ...data, experience: previousState.experience, summary: previousState.summary, coverLetter: previousState.coverLetter });
+                setPreviousState(null);
               }}
               className="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold py-3 px-6 rounded-xl transition-all flex items-center gap-2"
             >
@@ -119,40 +120,6 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
             </button>
           )}
         </div>
-
-        {suggestedInvention && (
-          <div className="mt-8 bg-indigo-500/10 border border-indigo-500/20 p-6 rounded-2xl relative">
-             <button onClick={() => setSuggestedInvention(null)} className="absolute top-4 right-4 text-zinc-500 hover:text-white">✕</button>
-             <h4 className="text-indigo-400 font-bold mb-2 flex items-center gap-2">💡 AI Suggested Invention</h4>
-             <p className="text-sm text-zinc-300 mb-4">Based on the job description, the employer would love this project:</p>
-             <div className="bg-black/20 p-4 rounded-xl mb-4">
-               <h5 className="font-bold text-white text-lg">{suggestedInvention.title}</h5>
-               <p className="text-zinc-400 text-sm mb-2">{suggestedInvention.description}</p>
-               <ul className="list-disc pl-5 text-sm text-zinc-300 space-y-1">
-                 {suggestedInvention.bullets.map((b, i) => <li key={i}>{b}</li>)}
-               </ul>
-             </div>
-             <button 
-               onClick={() => {
-                 onChange({
-                   ...data,
-                   projects: [{
-                     id: generateId(),
-                     title: suggestedInvention.title,
-                     description: suggestedInvention.description,
-                     link: '',
-                     bullets: suggestedInvention.bullets,
-                   }, ...data.projects]
-                 });
-                 setSuggestedInvention(null);
-                 alert('Suggested invention added to your Projects!');
-               }}
-               className="bg-white text-black font-bold py-2 px-6 rounded-lg text-sm hover:bg-zinc-200 transition-colors"
-             >
-               Add to Projects
-             </button>
-          </div>
-        )}
       </section>
 
       {/* Appearance & Settings */}
