@@ -37,6 +37,11 @@ export interface Education {
   gpa?: string;
 }
 
+export interface SkillCategory {
+  name: string;
+  items: string[];
+}
+
 export interface VitaeData {
   documentTitle?: string;
   themeColor?: string;
@@ -54,10 +59,7 @@ export interface VitaeData {
   };
   coverLetter?: string;
   summary: string;
-  skills: {
-    technical: string[];
-    soft: string[]; // Still keep for state, but filter in preview
-  };
+  skills: SkillCategory[];
   projects: Project[];
   experience: Experience[];
   education: Education[];

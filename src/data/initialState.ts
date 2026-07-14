@@ -28,30 +28,29 @@ export const initialVitaeData: VitaeData = {
   },
   "coverLetter": "My company was born in adversity, as I started out with a $1,000 credit card loan. I had to learn how to prospect, sell, design, develop, and host websites by myself.  Through diligent networking and cold calling, I identified several website prospects.  I quickly recognized the need to partner with both a designer and a developer to keep up with the demand.  I met my design partner through a logo design contest.  I then went through several developers to find the one I felt most comfortable with.  He stood out because of his skills and work ethic.  Together, we successfully delivered 40+ client projects across multiple industries over the past 8 years.\n\nThrough this experience, I learned that the hardest part in delivering high quality solutions to our clients was bridging the communications gap between design and development - oil and water; getting them on the same page.  Initially, my role was focused on prospecting, helping clients develop their brand strategies, and selling websites and applications.  But given the critical need to align design and development, I then focused on strengthening my technology and software development skills in order to enhance the communications between our team.  In March of this year, I attained certification as a Software Engineer through a program at TripleTen.  I've learned that I really enjoy software development and am interested in pursuing a position with a development focus that can benefit from my skills and experiences.",
   "summary": "My background in developing brand strategies taught me a crucial lesson: the best brand vision in the world will fail if design and development aren't on the same page. To become a more effective strategist, I leaned into the technical side, earning a Software Engineering certification from TripleTen in March. Today, I leverage this unique blend of creative brand strategy and software development expertise to bridge the gap between design and tech, ensuring brand identities are executed flawlessly across digital platforms.",
-  "skills": {
-    "technical": [
-      "Node/Express JS",
-      "JS React",
-      "CSS",
-      "Tailwind CSS",
-      "HTML 5",
-      "MongoDB",
-      "Docker",
-      "Next JS",
-      "Github",
-      "Digital Ocean",
-      "Google Cloud",
-      "VS Code",
-      "Chat GPT",
-      "Vercel",
-      "Anti-Gravity",
-      "Klaviyo {Built my own}",
-      "Figma",
-      "WordPress",
-      "SEO"
-    ],
-    "soft": []
-  },
+  "skills": [
+    {
+      "name": "Strategy & Consulting",
+      "items": [
+        "Brand Strategy", "Digital Strategy", "Product Strategy", "Customer Experience", 
+        "Market Research", "Requirements Gathering", "Stakeholder Management", "Agile Delivery"
+      ]
+    },
+    {
+      "name": "Design & UX",
+      "items": [
+        "UX/UI Strategy", "Wireframing", "User Journeys", "Information Architecture", 
+        "Design Systems", "Figma"
+      ]
+    },
+    {
+      "name": "Technical Proficiencies",
+      "items": [
+        "HTML5", "CSS3", "JavaScript", "React", "Node.js", "Express", "REST APIs", 
+        "SQL", "Git/GitHub"
+      ]
+    }
+  ],
   "projects": [],
   "experience": [
     {

@@ -109,13 +109,22 @@ export const VitaePreview: React.FC<VitaePreviewProps> = ({ data }) => {
                   </p>
                 </section>
 
-                {/* Technical Skills */}
-                {data.skills.technical.length > 0 && (
+                {/* Skills */}
+                {data.skills.length > 0 && (
                   <section>
-                    <h3 className="text-[12px] font-bold mb-3 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)] break-after-avoid">Technical Skills</h3>
-                    <p className="text-[12.5px] leading-[1.8] text-[var(--text-main)] font-normal">
-                      {data.skills.technical.join(', ')}
-                    </p>
+                    <h3 className="text-[12px] font-bold mb-3 uppercase tracking-[0.2em] border-b border-[var(--border-main)] pb-2 text-[var(--text-muted)] break-after-avoid">Areas of Expertise</h3>
+                    <div className="space-y-2">
+                      {data.skills.map((category, idx) => (
+                        <div key={idx} className="flex flex-col">
+                          <span className="text-[12.5px] font-bold text-[var(--text-main)] mb-1">
+                            {category.name}
+                          </span>
+                          <span className="text-[12.5px] leading-[1.8] text-[var(--text-main)] font-normal">
+                            {category.items.join(' • ')}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </section>
                 )}
 

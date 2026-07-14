@@ -21,7 +21,7 @@ export const Checklist: React.FC<ChecklistProps> = ({ data }) => {
     },
     {
       label: "Skills: Focus on technical skills",
-      isValid: data.skills.technical.length > 5
+      isValid: data.skills.reduce((acc, cat) => acc + cat.items.length, 0) > 5
     },
     {
       label: "Projects: 3-5 bullets per project",

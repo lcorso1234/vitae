@@ -7,10 +7,9 @@ interface VitaeFormProps {
 }
 
 export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
-  const [skillsText, setSkillsText] = React.useState(data.skills.technical.join(', '));
   const [jobDescription, setJobDescription] = React.useState('');
   const [isTailoring, setIsTailoring] = React.useState(false);
-  const [previousState, setPreviousState] = React.useState<{experience: Experience[], summary: string, coverLetter?: string} | null>(null);
+  const [previousState, setPreviousState] = React.useState<{experience: Experience[], summary: string, coverLetter?: string, targetPosition?: string, skills?: any[]} | null>(null);
 
   const handleTailorResume = async () => {
     if (!jobDescription) return alert('Please enter a job description first.');
@@ -24,6 +23,7 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
           experience: data.experience,
           summary: data.summary,
           coverLetter: data.coverLetter,
+          skills: data.skills,
         }),
       });
       
@@ -37,16 +37,23 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
         experience: data.experience,
         summary: data.summary,
         coverLetter: data.coverLetter,
+        targetPosition: data.personalInfo.targetPosition,
+        skills: data.skills,
       });
 
       onChange({
         ...data,
+        personalInfo: {
+          ...data.personalInfo,
+          targetPosition: result.targetJobTitle || data.personalInfo.targetPosition,
+        },
         experience: result.tailoredExperience,
         summary: result.tailoredSummary,
         coverLetter: result.tailoredCoverLetter,
+        skills: result.tailoredSkills || data.skills,
       });
 
-      alert('Resume successfully tailored!');
+      alert(`Resume successfully tailored for the "${result.targetJobTitle || 'Target'}" role!`);
 
     } catch (error: any) {
       alert(`Error: ${error.message}`);
@@ -55,13 +62,7 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
     }
   };
 
-  React.useEffect(() => {
-    const newTextCleaned = data.skills.technical.join(', ');
-    const currentTextCleaned = skillsText.split(',').map(s => s.trim()).filter(Boolean).join(', ');
-    if (newTextCleaned !== currentTextCleaned) {
-      setSkillsText(newTextCleaned);
-    }
-  }, [data.skills.technical, skillsText]);
+
 
   const handlePersonalInfoChange = (field: string, value: string) => {
     onChange({
@@ -110,7 +111,17 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
           {previousState && (
             <button
               onClick={() => {
-                onChange({ ...data, experience: previousState.experience, summary: previousState.summary, coverLetter: previousState.coverLetter });
+                onChange({ 
+                  ...data, 
+                  personalInfo: {
+                    ...data.personalInfo,
+                    targetPosition: previousState.targetPosition || data.personalInfo.targetPosition
+                  },
+                  experience: previousState.experience, 
+                  summary: previousState.summary, 
+                  coverLetter: previousState.coverLetter,
+                  skills: previousState.skills || data.skills,
+                });
                 setPreviousState(null);
               }}
               className="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold py-3 px-6 rounded-xl transition-all flex items-center gap-2"
@@ -229,18 +240,37 @@ export const VitaeForm: React.FC<VitaeFormProps> = ({ data, onChange }) => {
 
       {/* Skills */}
       <section className="bg-zinc-900 border border-white/10 p-8 rounded-3xl shadow-2xl">
-        <h3 className="text-2xl font-bold tracking-tighter text-white mb-8 border-b border-white/5 pb-4">Technical Skills</h3>
-        <textarea
-          value={skillsText}
-          onChange={(e) => {
-            const val = e.target.value;
-            setSkillsText(val);
-            onChange({ ...data, skills: { ...data.skills, technical: val.split(',').map(s => s.trim()).filter(Boolean) } });
-          }}
-          rows={2}
-          className="w-full bg-zinc-800/50 text-white rounded-xl border border-white/5 p-4 focus:outline-none focus:border-indigo-500 transition-colors"
-          placeholder="Comma separated list of skills..."
-        />
+        <div className="flex justify-between items-center mb-8 border-b border-white/5 pb-4">
+          <h3 className="text-2xl font-bold tracking-tighter text-white">Skills</h3>
+          <button onClick={() => {
+            onChange({ ...data, skills: [...data.skills, { name: 'New Category', items: [] }] });
+          }} className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-indigo-500">Add Category</button>
+        </div>
+        <div className="space-y-6">
+          {data.skills.map((category, i) => (
+             <div key={i} className="relative bg-zinc-800/20 p-6 rounded-2xl border border-white/5 group">
+               <button onClick={() => {
+                 const newSkills = data.skills.filter((_, idx) => idx !== i);
+                 onChange({ ...data, skills: newSkills });
+               }} className="absolute -top-3 -right-3 bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-red-600 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity z-10">✕</button>
+               
+               <Input label="Category Name" value={category.name} onChange={(v) => {
+                 const newSkills = [...data.skills];
+                 newSkills[i].name = v;
+                 onChange({ ...data, skills: newSkills });
+               }} className="mb-4" />
+               
+               <SkillsTextarea 
+                 skills={category.items} 
+                 onChange={(items) => {
+                   const newSkills = [...data.skills];
+                   newSkills[i].items = items;
+                   onChange({ ...data, skills: newSkills });
+                 }} 
+               />
+             </div>
+          ))}
+        </div>
       </section>
 
       {/* Experience */}
