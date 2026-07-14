@@ -18,7 +18,8 @@ export async function POST(req: Request) {
       system: `You are an expert technical recruiter and resume writer. 
 Your goal is to tailor the candidate's work experience, professional summary, cover letter, and skills to perfectly align with a target job description.
 Do NOT lie or invent completely false metrics, but highlight relevant aspects, rephrase achievements using strong action verbs, subtly tailor job titles (role) to better align with the target position, reorder/modify skills to emphasize relevance, and include keywords from the job description where applicable.
-Ensure all generated content is highly concise to ensure the final resume does not exceed two pages.`,
+Ensure all generated content is highly concise to ensure the final resume does not exceed two pages.
+CRITICAL INSTRUCTION: The candidate's name is Larry Corso. DO NOT use any placeholders like [Your Name], [Company Name], [Contact Info], etc. in the generated content. If a name is needed, always use "Larry Corso". Write the content so it is completely finished and requires zero fill-in-the-blanks by the user.`,
       prompt: `Target Job Description:
 ${jobDescription}
 
